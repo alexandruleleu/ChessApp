@@ -1,0 +1,108 @@
+  <div class="container col-md-6 col-md-offset-3" >
+  <div class="panel panel-default">
+    <div class="panel-heading"><span class="input-group-addon"><i class="glyphicon glyphicon-king"></i><h3>Chess application</h3></span></div>
+    <div class="panel-body">
+    <div>
+      <div label="Login">
+        <div class="formLogin">
+          <h4 style="text-align: center">Login </h4><hr>
+          	<form name="loginFrm" ng-submit="login()">
+		      <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+		        <input name="email" type="text" class="form-control" placeholder="Email" ng-model="loginData.email" required>
+		      </div>
+		      
+		      <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+		        <input type="password" name="password" class="form-control" placeholder="Password" ng-model="loginData.password" required>
+		      </div><hr>
+		      <div class="error-login">
+		      <button type="submit" class="btn btn-info" ng-disabled="!loginData.email || !loginData.password" >Login</button>
+		      <p ng-if="error">Wrong password or username!</p>
+		      </div>
+          <div class="change-pass">
+		      <p ng-click="changePsw()">Change your password</p>
+		      </div>
+		    </form>
+        </div>
+      </div>
+      <div class="panel panel-default"label="Sign up">
+        <div>
+          <h4 style="text-align: center">Register</h4>
+          <hr>
+          <div class="form-group"> 
+          <form name="signupFrm" ng-submit="signup()">
+		      <div style="display: inline-block;">
+		        <label for="email" class="control-label">Enter new email *</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email" ng-model="newAcc.email" required minlength="5" maxlength="30">
+		      </div>
+		      <div style="display: inline-block;">
+		        <label for="email" class="control-label">Enter good password *</label>
+		        <input type="password" name="password" class="form-control" id="email" placeholder="Enter good Password" ng-model="newAcc.password" required minlength="5" maxlength="30">
+		      </div><br>
+		      <div>
+                <br>
+				<label>Your role?</label>
+				<br/>
+                <div class="form-group">
+				<select class="form-control" name="accType" ng-model="newAcc.type" style="width: 20rem">
+					<option value="0" >Manager</option>
+					<option value="1" >Bettor</option>
+				</select>
+				</div>
+                </div>
+		      <hr>
+              <div class="form-group">
+		      <button class="btn btn-info" type="submit" ng-disabled="newAcc.email.length<3 || newAcc.password.length<3">Sign up!</button>
+                <p style="display: inline-block;vertical-align: center;color: green" ng-if="success">Account created!</p>
+                <p style="display: inline-block;vertical-align: center;color: red" ng-if="signErr">Account failed to create!</p>
+              
+              </div>
+		    </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <script type="text/ng-template" id="changePassword.html">
+  <form name="loginFrm" ng-submit="change()">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title">Change your password</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <div class="formLogin">
+          <h4 style="text-align: center">Enter new things </h4><hr>
+            
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input name="email" type="text" class="form-control" placeholder="Email" ng-model="changeData.email" required>
+              </div>
+              
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" name="password" class="form-control" placeholder="Old password" ng-model="changeData.oldPassword"" required>
+              </div><hr>
+
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input type="password" name="password" class="form-control" placeholder="New password" ng-model="changeData.newPassword" required>
+              </div>
+              <div>
+
+              <p style="display: inline-block;vertical-align: center;color: red" ng-if="error">Something went wrong!</p>
+              
+              </div>
+              
+            
+            
+        </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" type="button" ng-disabled="!changeData.email || !changeData.oldPassword || !changeData.newPassword">Change!</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </form>
+    </script>

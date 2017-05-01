@@ -1,0 +1,28 @@
+<!-- Manager !!! -->
+<div  class="navbar navbar-default logout-bar" ng-if="account.type==0">
+
+	<div>
+		<h4>Hello Manager - {{account.email}}</h4>
+	</div>	
+	<div>
+		<button class="btn btn-info btn-md" ng-click="logout()">
+		<span class="glyphicon glyphicon-log-out"></span> Log out</button>
+	</div>
+	
+</div>
+
+
+<!-- Bettor !!!! -->
+<div class="navbar navbar-default logout-bar" ng-if="account.type==1">
+	<div>
+		<h4>Hello Bettor - {{account.email}}</h4>
+		<h4>Your money: {{account.money}}</h4>
+	</div>
+		
+	
+	<div>
+		<button class="btn btn-info btn-md" ng-click="logout()">
+		<span class="glyphicon glyphicon-log-out"></span> Log out</button>
+	</div>
+	
+</div>
